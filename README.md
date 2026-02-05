@@ -1,36 +1,111 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Movie Discovery Application
 
-## Getting Started
+A responsive movie browsing application built with Next.js 15, TypeScript, and Tailwind CSS, powered by The Movie Database (TMDB) API.
 
-First, run the development server:
+## 🚀 Getting Started
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+### Prerequisites
+
+- Node.js 18+
+- TMDB API Key v3 ([Get one here](https://www.themoviedb.org/settings/api))
+
+### Installation
+
+1. **Clone the repository**
+
+   ```bash
+   git clone <your-repo-url>
+   cd pyutoheolr
+   ```
+
+2. **Install dependencies**
+
+   ```bash
+   npm install
+   ```
+
+3. **Set up environment variables**
+
+   Create a `.env.local` file in the root directory:
+
+   ```bash
+   cp .env.example .env.local
+   ```
+
+   Add your TMDB API Key (v3) to `.env.local`:
+
+   ```env
+   TMDB_API_KEY=your_api_key_here
+   ```
+
+   > 🔒 **Security Note**: The API key is server-side only (no `NEXT_PUBLIC_` prefix). Never commit `.env.local` to version control.
+
+4. **Run the development server**
+
+   ```bash
+   npm run dev
+   ```
+
+5. **Open your browser**
+
+   Navigate to [http://localhost:3000](http://localhost:3000)
+
+## 📁 Project Structure
+
+```
+pyutoheolr/
+├── src/
+│   ├── app/                    # Next.js App Router pages
+│   ├── components/             # React components
+│   ├── services/               # API layer (server-side)
+│   │   └── tmdb.ts            # TMDB API endpoints
+│   ├── config/                 # Configuration files
+│   │   └── tmdb.config.ts     # TMDB constants
+│   └── lib/                    # Utilities and helpers
+│       └── tmdb/
+│           └── fetch.ts       # Core fetch function
+├── .env.local                  # Local environment (git-ignored)
+├── .env.example                # Environment template
+└── README.md
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🔐 Environment Variables
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Variable       | Description            | Required |
+| -------------- | ---------------------- | -------- |
+| `TMDB_API_KEY` | Your TMDB API Key (v3) | Yes      |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🛠️ Tech Stack
 
-## Learn More
+- **Framework**: Next.js 15 (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS v4
+- **API**: TMDB API v3
+- **HTTP Client**: Native `fetch` with Next.js caching
 
-To learn more about Next.js, take a look at the following resources:
+## 📝 Development
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+This project follows Next.js best practices:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Server Components for data fetching
+- Built-in `fetch` with ISR caching
+- Secure API key management (server-side only)
+- TypeScript strict mode
 
-## Deploy on Vercel
+## 🚢 Deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Vercel (Recommended)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Push your code to GitHub
+2. Import project in Vercel
+3. Add environment variable:
+   - `TMDB_API_KEY` = your_api_key_v3
+4. Deploy
+
+### Other Platforms
+
+Set the `TMDB_API_KEY` environment variable in your deployment platform's dashboard.
+
+## 📄 License
+
+This project is for educational purposes.
