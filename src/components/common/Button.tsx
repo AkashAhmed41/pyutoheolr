@@ -18,7 +18,7 @@ export default function Button({
   const variants = {
     primary: "bg-white text-black hover:bg-gray-200 shadow-lg hover:shadow-xl",
     secondary:
-      "bg-gray-600/80 text-white hover:bg-gray-500 backdrop-blur-sm font-semibold hover:ring-1 hover:ring-white/50",
+      "bg-gray-600/80 text-white hover:bg-gray-500 backdrop-blur-sm font-semibold",
   };
 
   return (

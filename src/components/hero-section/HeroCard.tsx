@@ -50,7 +50,7 @@ export default function HeroCard({
             <span className="text-xs md:text-sm text-gray-300 border-l border-gray-600 pl-2 md:pl-3 ml-1">
               {getReleaseYear(releaseDate)}
             </span>
-            <span className="text-[10px] px-2 py-0.5 rounded bg-gray-800 text-gray-300 border border-gray-600">
+            <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-yellow-400 text-black uppercase tracking-wide shadow-sm">
               {getLocalizedText("HOMEPAGE", "TOP_RATED")}
             </span>
           </div>

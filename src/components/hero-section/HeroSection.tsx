@@ -81,7 +81,7 @@ export default function HeroSection({ movies }: HeroSectionProps) {
             priority={index === 0}
           />
         ))}
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
       </div>
       <div className="relative h-full w-full z-10 perspective-1000">
         {movies.map((movie, index) => (

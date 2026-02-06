@@ -1,6 +1,6 @@
 import { fetchHomepageData } from "@/lib/services/HomeService";
 import HeroSection from "@/components/hero-section/HeroSection";
-import GenreNav from "@/components/GenreNav";
+import GenreNav from "@/components/genre-section/GenreNav";
 import GenreSection from "@/components/GenreSection";
 
 export default async function Home() {

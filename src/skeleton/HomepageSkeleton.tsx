@@ -1,9 +1,11 @@
 import HeroSkeleton from "./HeroSkeleton";
+import GenreNavSkeleton from "./GenreNavSkeleton";
 
 export default function HomepageSkeleton() {
   return (
     <div className="min-h-screen bg-black animate-pulse">
       <HeroSkeleton />
+      <GenreNavSkeleton />
       <div className="max-w-[1200px] w-full mx-auto px-4 py-8 space-y-8">
         {[1, 2, 3].map((i) => (
           <div key={i} className="space-y-4">
