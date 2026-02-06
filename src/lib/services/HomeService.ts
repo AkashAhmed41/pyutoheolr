@@ -2,13 +2,13 @@ import {
   getTopRatedMovies,
   getMoviesByGenre,
   getGenres,
-} from "@/lib/tmdb/tmdb.server";
-import type { HomepageData, GenreWithMovies, Genre } from "@/types/tmdb";
+} from "@/lib/tmdb/TMDBServer";
+import type { HomepageData, GenreWithMovies, Genre } from "@/types/Interfaces";
 import {
   DEFAULT_PAGE,
   MOVIES_FOR_HOMEPAGE_PER_GENRE,
 } from "@/lib/constants/ApplicationConstants";
-import { isEmptyArray } from "@/lib/utils/objectUtils";
+import { isEmptyArray } from "@/lib/utils/ObjectUtils";
 
 export async function fetchHomepageData(): Promise<HomepageData> {
   try {

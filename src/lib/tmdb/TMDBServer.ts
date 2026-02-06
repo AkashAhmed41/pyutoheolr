@@ -1,16 +1,16 @@
 import { DEFAULT_PAGE } from "@/lib/constants/ApplicationConstants";
-import { tmdbFetch } from "@/lib/tmdb/tmdb.fetch";
+import { tmdbFetch } from "@/lib/tmdb/TMDBFetch";
 import { CACHE_CONFIG } from "@/config/tmdb.config";
 import type {
   TMDBGenreListResponse,
   TMDBMovieListResponse,
   Genre,
   Movie,
-} from "@/types/tmdb";
+} from "@/types/Interfaces";
 import {
   mapGenreListResponse,
   mapMovieListResponse,
-} from "@/lib/mappers/tmdb.mapper";
+} from "@/lib/mappers/TMDBMapper";
 
 export async function getGenres(): Promise<{ genres: Genre[] }> {
   const data = await tmdbFetch<TMDBGenreListResponse>(

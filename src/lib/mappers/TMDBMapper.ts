@@ -5,7 +5,7 @@ import type {
   Genre,
   TMDBMovieListResponse,
   TMDBGenreListResponse,
-} from "@/types/tmdb";
+} from "@/types/Interfaces";
 
 export const mapTMDBMovieToMovie = (tmdbMovie: TMDBMovie): Movie => {
   return {

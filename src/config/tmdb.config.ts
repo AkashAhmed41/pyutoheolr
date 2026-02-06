@@ -21,17 +21,3 @@ export const CACHE_CONFIG = {
   GENRES_REVALIDATE: 86400,
   SEARCH_REVALIDATE: 300,
 } as const;
-
-export function getImageUrl(
-  path: string | null,
-  size: keyof typeof IMAGE_SIZES = "POSTER_LARGE",
-): string {
-  if (!path) return "/placeholder-movie.png";
-  return `${TMDB_CONFIG.IMAGE_BASE_URL}/${IMAGE_SIZES[size]}${path}`;
-}
-
-if (!TMDB_CONFIG.API_KEY) {
-  throw new Error(
-    "TMDB_API_KEY is not defined. Please add it to your .env.local file.",
-  );
-}

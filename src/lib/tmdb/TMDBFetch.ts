@@ -1,5 +1,5 @@
 import { TMDB_CONFIG, CACHE_CONFIG } from "@/config/tmdb.config";
-import { isNullOrUndefined } from "@/lib/utils/objectUtils";
+import { isNullOrUndefined } from "@/lib/utils/ObjectUtils";
 
 export async function tmdbFetch<T>(
   endpoint: string,
@@ -10,8 +10,14 @@ export async function tmdbFetch<T>(
     throw new Error("The fetch function must be called on the server side");
   }
 
+  if (!TMDB_CONFIG.API_KEY) {
+    throw new Error(
+      "TMDB_API_KEY is not defined. Please add it to your .env.local file.",
+    );
+  }
+
   const url = new URL(`${TMDB_CONFIG.BASE_URL}${endpoint}`);
-  url.searchParams.append("api_key", TMDB_CONFIG.API_KEY!);
+  url.searchParams.append("api_key", TMDB_CONFIG.API_KEY);
 
   if (params) {
     Object.entries(params).forEach(([key, value]) => {
