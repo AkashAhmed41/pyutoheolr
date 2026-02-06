@@ -1,3 +1,13 @@
+import en from "@/lib/localization/en.json";
+
+export function getLocalizedText(
+  section: keyof typeof en,
+  key: string,
+): string {
+  const sectionData = en[section] as Record<string, string>;
+  return sectionData?.[key] || key;
+}
+
 export function getReleaseYear(dateString: string): string {
   if (!dateString) {
     return "";

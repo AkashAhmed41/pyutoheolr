@@ -1,15 +1,26 @@
 import { fetchHomepageData } from "@/lib/services/HomeService";
+import HeroSection from "@/components/hero-section/HeroSection";
+import GenreNav from "@/components/GenreNav";
+import GenreSection from "@/components/GenreSection";
 
 export default async function Home() {
   const homepageData = await fetchHomepageData();
-  console.log("Homepage Data:", homepageData);
+  const { topRatedMovies, genresWithPopularMovies, allGenres } = homepageData;
 
   return (
-    <div className="flex items-center justify-center min-h-screen">
-      <main className="text-center">
-        <h1 className="text-2xl font-bold">Welcome to Movie App</h1>
-        <p>Check the server console for data.</p>
-      </main>
+    <div className="min-h-screen bg-black">
+      <HeroSection movies={topRatedMovies} />
+      <div className="max-w-[1200px] w-full mx-auto">
+        <GenreNav genres={allGenres} />
+        <main className="py-8">
+          {genresWithPopularMovies.map((genreWithMovies) => (
+            <GenreSection
+              key={genreWithMovies.genre.id}
+              genreWithMovies={genreWithMovies}
+            />
+          ))}
+        </main>
+      </div>
     </div>
   );
 }
