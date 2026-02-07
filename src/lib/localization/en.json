@@ -11,5 +11,10 @@
     "VOTE_AVERAGE": "Rating",
     "TITLE": "Title",
     "MOVIE_GENRE": "Movie genre"
+  },
+  "MOVIE_DETAILS": {
+    "OVERVIEW": "Overview",
+    "TOP_CAST": "Top Cast",
+    "SIMILAR_MOVIES": "Similar Movies"
   }
 }

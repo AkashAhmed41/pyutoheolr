@@ -1,6 +1,6 @@
 import React from "react";
 import GenrePageHeaderSkeleton from "./GenrePageHeaderSkeleton";
-import MovieGridSkeleton from "./MovieGridSkeleton";
+import MovieGridSkeleton from "../common/MovieGridSkeleton";
 
 export default function GenrePageSkeleton() {
   return (

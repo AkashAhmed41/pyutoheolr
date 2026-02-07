@@ -1,5 +1,9 @@
 export const DEFAULT_PAGE = 1;
 export const MOVIES_FOR_HOMEPAGE_PER_GENRE = 5;
 export const HERO_SECTION_ROTATION_INTERVAL = 5000;
-export const GENRE_NAV_SCROLL_AMOUNT = 300;
-export const GENRE_NAV_SCROLL_THRESHOLD = 10;
+export const HORIZONTAL_SCROLL_AMOUNT = 400;
+export const HORIZONTAL_SCROLL_THRESHOLD = 10;
+export const SCROLL_CHECK_DELAY = 100;
+export const MAX_CAST_MEMBERS = 15;
+export const DEFAULT_RUNTIME = 0;
+export const MINUTES_IN_HOUR = 60;

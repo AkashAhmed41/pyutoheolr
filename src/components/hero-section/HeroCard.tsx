@@ -6,6 +6,7 @@ import { getReleaseYear, getFormattedRating } from "@/lib/utils/CommonUtils";
 import { StarIcon, InfoIcon } from "@/lib/svg/icons";
 import Button from "@/components/common/Button";
 import { getLocalizedText } from "@/lib/utils/CommonUtils";
+import { appRouteList } from "@/lib/utils/PageRouteUtils";
 
 interface HeroCardProps {
   movie: Movie;
@@ -18,7 +19,7 @@ export default function HeroCard({
   isActive,
   priority = false,
 }: HeroCardProps) {
-  const { title, backdropPath, voteAverage, releaseDate, overview } = movie;
+  const { id, title, backdropPath, voteAverage, releaseDate, overview } = movie;
 
   return (
     <div className="relative w-full aspect-[16/9] rounded-xl overflow-hidden shadow-2xl ring-1 ring-white/10">
@@ -32,7 +33,7 @@ export default function HeroCard({
       />
       <div
         className={`absolute inset-0 transition-opacity duration-500 ${
-          isActive ? "opacity-100" : "opacity-5"
+          isActive ? "opacity-100" : "opacity-5 pointer-events-none"
         }`}
       >
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
@@ -58,7 +59,11 @@ export default function HeroCard({
             {overview}
           </p>
           <div className="hidden md:flex gap-3">
-            <Button variant="secondary" icon={<InfoIcon />}>
+            <Button
+              variant="secondary"
+              icon={<InfoIcon />}
+              href={appRouteList.movieDetails(id)}
+            >
               {getLocalizedText("HOMEPAGE", "MORE_INFO")}
             </Button>
           </div>

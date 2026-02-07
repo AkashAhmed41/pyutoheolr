@@ -31,6 +31,36 @@ export interface TMDBGenreListResponse {
   genres: TMDBGenre[];
 }
 
+export interface TMDBProductionCompany {
+  id: number;
+  logo_path: string | null;
+  name: string;
+  origin_country: string;
+}
+
+export interface TMDBStarCast {
+  id: number;
+  name: string;
+  character: string;
+  profile_path: string | null;
+  order: number;
+}
+
+export interface TMDBMovieCredits {
+  cast: TMDBStarCast[];
+}
+
+export interface TMDBMovieDetails extends TMDBMovie {
+  tagline: string | null;
+  runtime: number | null;
+  genres: TMDBGenre[];
+  production_companies: TMDBProductionCompany[];
+  status: string;
+  revenue: number;
+  budget: number;
+  credits?: TMDBMovieCredits;
+}
+
 export interface Movie {
   id: number;
   title: string;
@@ -46,6 +76,21 @@ export interface Movie {
   adult: boolean;
   video: boolean;
   originalLanguage: string;
+}
+
+export interface CastMember {
+  id: number;
+  name: string;
+  character: string;
+  profilePath: string | null;
+}
+
+export interface MovieDetails extends Movie {
+  tagline: string | null;
+  runtime: number;
+  genres: Genre[];
+  status: string;
+  cast: CastMember[];
 }
 
 export interface Genre {

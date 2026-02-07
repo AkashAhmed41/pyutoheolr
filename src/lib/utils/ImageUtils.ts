@@ -22,3 +22,14 @@ export function getBackdropUrl(
 
   return `${TMDB_CONFIG.IMAGE_BASE_URL}/${IMAGE_SIZES[size]}${path}`;
 }
+
+export function getProfileUrl(
+  path: string | null,
+  size: keyof typeof IMAGE_SIZES = "POSTER_MEDIUM",
+): string {
+  if (!path) {
+    return PLACEHOLDER_SVG;
+  }
+
+  return `${TMDB_CONFIG.IMAGE_BASE_URL}/${IMAGE_SIZES[size]}${path}`;
+}

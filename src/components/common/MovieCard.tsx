@@ -1,8 +1,10 @@
 import Image from "next/image";
+import Link from "next/link";
 import type { Movie } from "@/types/Interfaces";
 import { getReleaseYear, getFormattedRating } from "@/lib/utils/CommonUtils";
 import { getPosterUrl } from "@/lib/utils/ImageUtils";
 import { StarIcon } from "@/lib/svg/icons";
+import { appRouteList } from "@/lib/utils/PageRouteUtils";
 
 interface MovieCardProps {
   movie: Movie;
@@ -13,10 +15,11 @@ export default function MovieCard({
   movie,
   className = "w-[185px]",
 }: MovieCardProps) {
-  const { title, posterPath, voteAverage, releaseDate } = movie;
+  const { id, title, posterPath, voteAverage, releaseDate } = movie;
 
   return (
-    <div
+    <Link
+      href={appRouteList.movieDetails(id)}
       className={`group relative flex-shrink-0 cursor-pointer transition-transform duration-300 hover:scale-105 ${className}`}
     >
       <div className="relative aspect-[2/3] overflow-hidden rounded-lg bg-gray-800">
@@ -36,7 +39,7 @@ export default function MovieCard({
           </span>
         </div>
       </div>
-      <div className="mt-2">
+      <div className="mt-2 text-left">
         <h3 className="text-sm font-bold text-white line-clamp-1 group-hover:text-blue-400 transition-colors">
           {title}
         </h3>
@@ -44,6 +47,6 @@ export default function MovieCard({
           {getReleaseYear(releaseDate)}
         </p>
       </div>
-    </div>
+    </Link>
   );
 }

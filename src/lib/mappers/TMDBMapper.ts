@@ -1,3 +1,7 @@
+import {
+  DEFAULT_RUNTIME,
+  MAX_CAST_MEMBERS,
+} from "@/lib/constants/ApplicationConstants";
 import type {
   TMDBMovie,
   Movie,
@@ -5,6 +9,9 @@ import type {
   Genre,
   TMDBMovieListResponse,
   TMDBGenreListResponse,
+  TMDBMovieDetails,
+  MovieDetails,
+  CastMember,
 } from "@/types/Interfaces";
 
 export const mapTMDBMovieToMovie = (tmdbMovie: TMDBMovie): Movie => {
@@ -30,6 +37,33 @@ export const mapTMDBGenreToGenre = (tmdbGenre: TMDBGenre): Genre => {
   return {
     id: tmdbGenre.id,
     name: tmdbGenre.name,
+  };
+};
+
+const mapTMDBStoreCastToCastMember = (cast: any): CastMember => {
+  return {
+    id: cast.id,
+    name: cast.name,
+    character: cast.character,
+    profilePath: cast.profile_path,
+  };
+};
+
+export const mapTMDBMovieDetailsToMovieDetails = (
+  tmdbDetails: TMDBMovieDetails,
+): MovieDetails => {
+  return {
+    ...mapTMDBMovieToMovie(tmdbDetails),
+    tagline: tmdbDetails.tagline,
+    runtime: tmdbDetails.runtime || DEFAULT_RUNTIME,
+    genres: tmdbDetails.genres.map(mapTMDBGenreToGenre),
+    status: tmdbDetails.status,
+    cast: tmdbDetails.credits
+      ? tmdbDetails.credits.cast
+          .sort((a, b) => a.order - b.order)
+          .slice(0, MAX_CAST_MEMBERS)
+          .map(mapTMDBStoreCastToCastMember)
+      : [],
   };
 };
 

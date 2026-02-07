@@ -1,11 +1,10 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
-import Image from "next/image";
 import type { Movie } from "@/types/Interfaces";
-import { getBackdropUrl } from "@/lib/utils/ImageUtils";
 import { HERO_SECTION_ROTATION_INTERVAL } from "@/lib/constants/ApplicationConstants";
 import HeroCard from "./HeroCard";
+import MovieBackdrop from "@/components/common/MovieBackdrop";
 
 interface HeroSectionProps {
   movies: Movie[];
@@ -70,18 +69,18 @@ export default function HeroSection({ movies }: HeroSectionProps) {
     <section className="relative h-[50vh] md:h-[70vh] w-full overflow-hidden bg-black">
       <div className="absolute inset-0 z-0">
         {movies.map((movie, index) => (
-          <Image
+          <MovieBackdrop
             key={`bg-${movie.id}`}
-            src={getBackdropUrl(movie.backdropPath)}
-            alt="Background"
-            fill
-            className={`object-cover blur-sm transition-opacity duration-[1500ms] ${
+            backdropPath={movie.backdropPath}
+            title="Background"
+            priority={index === 0}
+            className="absolute inset-0"
+            imageClassName={`object-cover blur-sm transition-opacity duration-[1500ms] ${
               index === activeIndex ? "opacity-60" : "opacity-0"
             }`}
-            priority={index === 0}
+            showGradient={index === activeIndex}
           />
         ))}
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
       </div>
       <div className="relative h-full w-full z-10 perspective-1000">
         {movies.map((movie, index) => (

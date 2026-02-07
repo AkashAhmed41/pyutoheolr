@@ -1,61 +1,28 @@
 "use client";
 
-import React, { useRef, useState, useEffect } from "react";
+import React from "react";
 import type { Genre } from "@/types/Interfaces";
 import Button from "@/components/common/Button";
 import { ChevronRightIcon, ChevronLeftIcon } from "@/lib/svg/icons";
 import { appRouteList, getGenreSlug } from "@/lib/utils/PageRouteUtils";
-import {
-  GENRE_NAV_SCROLL_AMOUNT,
-  GENRE_NAV_SCROLL_THRESHOLD,
-} from "@/lib/constants/ApplicationConstants";
+import { useHorizontalScroll } from "@/hooks/useHorizontalScroll";
 
 interface GenreNavProps {
   genres: Genre[];
 }
 
 export default function GenreNav({ genres }: GenreNavProps) {
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const [showRightArrow, setShowRightArrow] = useState(true);
-  const [showLeftArrow, setShowLeftArrow] = useState(false);
+  const {
+    scrollContainerRef,
+    showLeftArrow,
+    showRightArrow,
+    scrollLeft,
+    scrollRight,
+    checkScroll,
+  } = useHorizontalScroll([genres]);
 
   const scrollButtonClass =
     "!p-2 !rounded-full !bg-gray-800 !text-white hover:!bg-gray-700 !border !border-gray-700 !shadow-lg !transform-none hover:!scale-100 active:!scale-100";
-
-  const checkScroll = () => {
-    if (scrollContainerRef.current) {
-      const { scrollLeft, scrollWidth, clientWidth } =
-        scrollContainerRef.current;
-      setShowRightArrow(
-        scrollLeft + clientWidth < scrollWidth - GENRE_NAV_SCROLL_THRESHOLD,
-      );
-      setShowLeftArrow(scrollLeft > GENRE_NAV_SCROLL_THRESHOLD);
-    }
-  };
-
-  useEffect(() => {
-    checkScroll();
-    window.addEventListener("resize", checkScroll);
-    return () => window.removeEventListener("resize", checkScroll);
-  }, [genres]);
-
-  const scrollRight = () => {
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollBy({
-        left: GENRE_NAV_SCROLL_AMOUNT,
-        behavior: "smooth",
-      });
-    }
-  };
-
-  const scrollLeft = () => {
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollBy({
-        left: -GENRE_NAV_SCROLL_AMOUNT,
-        behavior: "smooth",
-      });
-    }
-  };
 
   return (
     <nav className="bg-black/95 backdrop-blur-sm border-b border-gray-800 py-4 relative group">
@@ -63,7 +30,7 @@ export default function GenreNav({ genres }: GenreNavProps) {
         <div
           ref={scrollContainerRef}
           onScroll={checkScroll}
-          className={`flex gap-3 overflow-x-auto scrollbar-hide scroll-smooth ${
+          className={`flex gap-3 overflow-x-auto scrollbar-hide scroll-smooth transition-[padding] duration-300 ${
             showRightArrow ? "pr-12" : ""
           } ${showLeftArrow ? "pl-12" : ""}`}
         >
@@ -79,7 +46,7 @@ export default function GenreNav({ genres }: GenreNavProps) {
           ))}
         </div>
         {showLeftArrow && (
-          <div className="absolute left-0 top-1/2 -translate-y-1/2 z-10 h-full flex items-center bg-gradient-to-r from-black via-black to-transparent pl-4 pr-8">
+          <div className="absolute left-0 top-1/2 -translate-y-1/2 z-10 h-full flex items-center bg-gradient-to-r from-black via-black/60 to-transparent pl-4 pr-8">
             <Button
               onClick={scrollLeft}
               className={scrollButtonClass}
@@ -90,7 +57,7 @@ export default function GenreNav({ genres }: GenreNavProps) {
           </div>
         )}
         {showRightArrow && (
-          <div className="absolute right-0 top-1/2 -translate-y-1/2 z-10 h-full flex items-center bg-gradient-to-l from-black via-black to-transparent pl-8 pr-4">
+          <div className="absolute right-0 top-1/2 -translate-y-1/2 z-10 h-full flex items-center bg-gradient-to-l from-black via-black/60 to-transparent pl-8 pr-4">
             <Button
               onClick={scrollRight}
               className={scrollButtonClass}

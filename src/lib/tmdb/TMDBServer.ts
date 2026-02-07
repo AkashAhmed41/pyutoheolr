@@ -6,10 +6,13 @@ import type {
   TMDBMovieListResponse,
   Genre,
   Movie,
+  MovieDetails,
+  TMDBMovieDetails,
 } from "@/types/Interfaces";
 import {
   mapGenreListResponse,
   mapMovieListResponse,
+  mapTMDBMovieDetailsToMovieDetails,
 } from "@/lib/mappers/TMDBMapper";
 
 export async function getGenres(): Promise<{ genres: Genre[] }> {
@@ -56,12 +59,12 @@ export async function getMoviesByGenre(
   return mapMovieListResponse(data);
 }
 
-export async function getMovieDetails(movieId: number): Promise<any> {
-  // Return raw for now until we have a details mapper
-  return tmdbFetch<any>({
+export async function getMovieDetails(movieId: number): Promise<MovieDetails> {
+  const data = await tmdbFetch<TMDBMovieDetails>({
     endpoint: `/movie/${movieId}`,
     params: { append_to_response: "credits" },
   });
+  return mapTMDBMovieDetailsToMovieDetails(data);
 }
 
 export async function getSimilarMovies(

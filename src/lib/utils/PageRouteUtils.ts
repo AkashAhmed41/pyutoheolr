@@ -1,6 +1,7 @@
 export const appRouteList = {
   home: "/",
   genre: (genreSlug: string) => `/${genreSlug}`,
+  movieDetails: (id: number) => `/movie/${id}`,
 };
 
 export const getGenreSlug = (name: string) => {
