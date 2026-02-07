@@ -1,14 +1,16 @@
+import { Suspense } from "react";
 import { fetchHomepageData } from "@/lib/services/HomeService";
 import HeroSection from "@/components/hero-section/HeroSection";
 import GenreNav from "@/components/genre-section/GenreNav";
 import GenreSection from "@/components/genre-section/GenreSection";
+import HomepageSkeleton from "@/skeleton/HomepageSkeleton";
 
-export default async function Home() {
+async function HomeContent() {
   const homepageData = await fetchHomepageData();
   const { topRatedMovies, genresWithPopularMovies, allGenres } = homepageData;
 
   return (
-    <div className="min-h-screen bg-black">
+    <>
       <HeroSection movies={topRatedMovies} />
       <div className="max-w-[1200px] w-full mx-auto">
         <GenreNav genres={allGenres} />
@@ -21,6 +23,16 @@ export default async function Home() {
           ))}
         </main>
       </div>
+    </>
+  );
+}
+
+export default function Home() {
+  return (
+    <div className="min-h-screen bg-black">
+      <Suspense fallback={<HomepageSkeleton />}>
+        <HomeContent />
+      </Suspense>
     </div>
   );
 }
