@@ -8,18 +8,19 @@ interface GenreSectionProps {
 
 export default function GenreSection({ genreWithMovies }: GenreSectionProps) {
   const { genre, movies } = genreWithMovies;
+  const { name } = genre;
 
   return (
     <section className="mb-8">
       <h2 className="text-xl md:text-2xl font-bold text-white mb-4 px-4 md:px-8">
-        {genre.name}
+        {name}
       </h2>
       <div className="relative px-4 md:px-8">
         <div className="flex gap-4 overflow-x-auto scrollbar-hide pb-4 pt-2 scroll-smooth [&>*:first-child]:origin-left [&>*:last-child]:origin-right">
           {movies.map((movie) => (
             <MovieCard key={movie.id} movie={movie} />
           ))}
-          <ViewAllCard />
+          <ViewAllCard genreName={name} />
         </div>
       </div>
     </section>

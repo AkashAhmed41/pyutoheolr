@@ -1,6 +1,6 @@
-import HeroSkeleton from "./HeroSkeleton";
-import GenreNavSkeleton from "./GenreNavSkeleton";
-import GenreSectionSkeleton from "./GenreSectionSkeleton";
+import HeroSkeleton from "./homepage/HeroSkeleton";
+import GenreNavSkeleton from "./homepage/GenreNavSkeleton";
+import GenreSectionSkeleton from "./homepage/GenreSectionSkeleton";
 
 export default function HomepageSkeleton() {
   return (

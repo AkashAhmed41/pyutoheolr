@@ -1,15 +1,17 @@
+import Link from "next/link";
 import { ChevronRightIcon } from "@/lib/svg/icons";
 import { getLocalizedText } from "@/lib/utils/CommonUtils";
+import { appRouteList, getGenreSlug } from "@/lib/utils/PageRouteUtils";
 
 interface ViewAllCardProps {
-  onClick?: () => void;
+  genreName: string;
 }
 
-export default function ViewAllCard({ onClick }: ViewAllCardProps) {
+export default function ViewAllCard({ genreName }: ViewAllCardProps) {
   return (
-    <div
+    <Link
+      href={appRouteList.genre(getGenreSlug(genreName))}
       className="group relative flex-shrink-0 w-[185px] cursor-pointer transition-transform duration-300 hover:scale-105"
-      onClick={onClick}
     >
       <div className="relative aspect-[2/3] overflow-hidden rounded-lg bg-gray-900 flex flex-col items-center justify-center gap-4 transition-colors">
         <span className="text-xl font-bold text-white group-hover:text-blue-400 transition-colors">
@@ -20,6 +22,6 @@ export default function ViewAllCard({ onClick }: ViewAllCardProps) {
         </div>
       </div>
       <div className="mt-2 h-[42px]" aria-hidden="true" />
-    </div>
+    </Link>
   );
 }

@@ -4,6 +4,7 @@ import React, { useRef, useState, useEffect } from "react";
 import type { Genre } from "@/types/Interfaces";
 import Button from "@/components/common/Button";
 import { ChevronRightIcon, ChevronLeftIcon } from "@/lib/svg/icons";
+import { appRouteList, getGenreSlug } from "@/lib/utils/PageRouteUtils";
 import {
   GENRE_NAV_SCROLL_AMOUNT,
   GENRE_NAV_SCROLL_THRESHOLD,
@@ -70,6 +71,7 @@ export default function GenreNav({ genres }: GenreNavProps) {
             <Button
               key={genre.id}
               variant="secondary"
+              href={appRouteList.genre(getGenreSlug(genre.name))}
               className="!rounded-full whitespace-nowrap !px-4 py-1 md:!px-6 md:py-2 text-xs md:text-sm hover:!bg-yellow-400 hover:!text-black !transform-none hover:!scale-100 active:!scale-100 !transition-all !duration-300"
             >
               {genre.name}

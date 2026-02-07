@@ -3,5 +3,13 @@
     "MORE_INFO": "More Info",
     "TOP_RATED": "Top Rated",
     "VIEW_ALL": "View All"
+  },
+  "GENRE_PAGE": {
+    "SORT_BY": "Sort by",
+    "POPULARITY": "Popularity",
+    "RELEASE_DATE": "Release date",
+    "VOTE_AVERAGE": "Rating",
+    "TITLE": "Title",
+    "MOVIE_GENRE": "Movie genre"
   }
 }

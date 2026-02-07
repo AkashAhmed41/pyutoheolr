@@ -1,11 +1,17 @@
 import { TMDB_CONFIG, CACHE_CONFIG } from "@/config/tmdb.config";
-import { isNullOrUndefined } from "@/lib/utils/ObjectUtils";
+import { generateQueryString } from "@/lib/utils/CommonUtils";
 
-export async function tmdbFetch<T>(
-  endpoint: string,
-  params?: Record<string, string | number>,
-  revalidate: number = CACHE_CONFIG.DEFAULT_REVALIDATE,
-): Promise<T> {
+interface TMDBFetchOptions {
+  endpoint: string;
+  params?: Record<string, string | number>;
+  revalidate?: number;
+}
+
+export async function tmdbFetch<T>({
+  endpoint,
+  params,
+  revalidate = CACHE_CONFIG.DEFAULT_REVALIDATE,
+}: TMDBFetchOptions): Promise<T> {
   if (typeof window !== "undefined") {
     throw new Error("The fetch function must be called on the server side");
   }
@@ -16,15 +22,13 @@ export async function tmdbFetch<T>(
     );
   }
 
-  const url = new URL(`${TMDB_CONFIG.BASE_URL}${endpoint}`);
-  url.searchParams.append("api_key", TMDB_CONFIG.API_KEY);
+  const queryOptions = {
+    api_key: TMDB_CONFIG.API_KEY,
+    ...params,
+  };
 
-  if (params) {
-    Object.entries(params).forEach(([key, value]) => {
-      if (isNullOrUndefined(value)) return;
-      url.searchParams.append(key, String(value));
-    });
-  }
+  const queryString = generateQueryString("", queryOptions);
+  const url = `${TMDB_CONFIG.BASE_URL}${endpoint}${queryString}`;
 
   try {
     const res = await fetch(url.toString(), {

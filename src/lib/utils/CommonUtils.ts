@@ -1,4 +1,5 @@
 import en from "@/lib/localization/en.json";
+import { isNullOrUndefined } from "@/lib/utils/ObjectUtils";
 
 export function getLocalizedText(
   section: keyof typeof en,
@@ -18,4 +19,17 @@ export function getReleaseYear(dateString: string): string {
 
 export function getFormattedRating(value: number): string {
   return value.toFixed(1);
+}
+
+export function generateQueryString(
+  searchParams: string | URLSearchParams,
+  options: Record<string, string | number>,
+): string {
+  const params = new URLSearchParams(searchParams.toString());
+  Object.entries(options).forEach(([key, value]) => {
+    if (isNullOrUndefined(value)) return;
+    params.set(key, String(value));
+  });
+
+  return `?${params.toString()}`;
 }

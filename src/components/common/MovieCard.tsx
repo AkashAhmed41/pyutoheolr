@@ -6,13 +6,19 @@ import { StarIcon } from "@/lib/svg/icons";
 
 interface MovieCardProps {
   movie: Movie;
+  className?: string;
 }
 
-export default function MovieCard({ movie }: MovieCardProps) {
+export default function MovieCard({
+  movie,
+  className = "w-[185px]",
+}: MovieCardProps) {
   const { title, posterPath, voteAverage, releaseDate } = movie;
 
   return (
-    <div className="group relative flex-shrink-0 w-[185px] cursor-pointer transition-transform duration-300 hover:scale-105">
+    <div
+      className={`group relative flex-shrink-0 cursor-pointer transition-transform duration-300 hover:scale-105 ${className}`}
+    >
       <div className="relative aspect-[2/3] overflow-hidden rounded-lg bg-gray-800">
         <Image
           src={getPosterUrl(posterPath)}
