@@ -2,7 +2,8 @@
   "HOMEPAGE": {
     "MORE_INFO": "More Info",
     "TOP_RATED": "Top Rated",
-    "VIEW_ALL": "View All"
+    "VIEW_ALL": "View All",
+    "POPULAR_MOVIES_HEADING": "Discover popular movies by genre"
   },
   "GENRE_PAGE": {
     "SORT_BY": "Sort by",
@@ -16,5 +17,11 @@
     "OVERVIEW": "Overview",
     "TOP_CAST": "Top Cast",
     "SIMILAR_MOVIES": "Similar Movies"
+  },
+  "RECENTLY_VIEWED": {
+    "TITLE": "Recently Viewed",
+    "DESCRIPTION": "Continue exploring from where you left off",
+    "NO_MOVIES_TITLE": "No recently viewed movies",
+    "NO_MOVIES_DESCRIPTION": "Movies you view will appear here. Start exploring to build your viewing history!"
   }
 }

@@ -3,7 +3,9 @@ import { fetchHomepageData } from "@/lib/services/HomeService";
 import HeroSection from "@/components/hero-section/HeroSection";
 import GenreNav from "@/components/genre-section/GenreNav";
 import GenreSection from "@/components/genre-section/GenreSection";
+import RecentlyViewedSection from "@/components/recently-viewed/RecentlyViewedSection";
 import HomepageSkeleton from "@/skeleton/HomepageSkeleton";
+import { getLocalizedText } from "@/lib/utils/CommonUtils";
 
 async function HomeContent() {
   const homepageData = await fetchHomepageData();
@@ -14,7 +16,11 @@ async function HomeContent() {
       <HeroSection movies={topRatedMovies} />
       <div className="max-w-[1200px] w-full mx-auto">
         <GenreNav genres={allGenres} />
-        <main className="py-8">
+        <RecentlyViewedSection />
+        <main className="py-2 md:py-4">
+          <h2 className="text-xl md:text-2xl font-semibold text-white mb-3 md:mb-4 px-4 md:px-8">
+            {getLocalizedText("HOMEPAGE", "POPULAR_MOVIES_HEADING")}
+          </h2>
           {genresWithPopularMovies.map((genreWithMovies) => (
             <GenreSection
               key={genreWithMovies.genre.id}

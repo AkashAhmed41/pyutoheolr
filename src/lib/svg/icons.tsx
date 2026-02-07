@@ -119,3 +119,41 @@ export const CalendarIcon = ({ className = "w-5 h-5" }: IconProps) => (
     />
   </svg>
 );
+
+export const ArrowRightIcon = ({ className = "w-4 h-4" }: IconProps) => (
+  <svg
+    className={className}
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={2}
+    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+    />
+  </svg>
+);
+
+export const ClapperboardIcon = ({ className = "w-12 h-12" }: IconProps) => (
+  <svg
+    className={className}
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={2}
+    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"
+    />
+    <path strokeLinecap="round" strokeLinejoin="round" d="M16 8l3.7-3.7" />
+    <path strokeLinecap="round" strokeLinejoin="round" d="M12 4l3.7 3.7" />
+    <path strokeLinecap="round" strokeLinejoin="round" d="M8 8l3.7-3.7" />
+    <path strokeLinecap="round" strokeLinejoin="round" d="M4 12l3.7-3.7" />
+  </svg>
+);

@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useEffect } from "react";
 import Image from "next/image";
 import { getPosterUrl } from "@/lib/utils/ImageUtils";
 import {
@@ -8,6 +10,7 @@ import {
   getLocalizedText,
 } from "@/lib/utils/CommonUtils";
 import { StarIcon, ClockIcon, CalendarIcon } from "@/lib/svg/icons";
+import { useRecentlyViewed } from "@/hooks/useRecentlyViewed";
 import type { MovieDetails } from "@/types/Interfaces";
 
 interface MoviePosterProps {
@@ -15,6 +18,12 @@ interface MoviePosterProps {
 }
 
 export default function MoviePoster({ movie }: MoviePosterProps) {
+  const { addMovieToHistory } = useRecentlyViewed();
+
+  useEffect(() => {
+    addMovieToHistory(movie);
+  }, [movie, addMovieToHistory]);
+
   const {
     posterPath,
     title,

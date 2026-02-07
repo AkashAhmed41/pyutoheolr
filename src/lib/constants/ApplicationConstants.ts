@@ -7,3 +7,6 @@ export const SCROLL_CHECK_DELAY = 100;
 export const MAX_CAST_MEMBERS = 15;
 export const DEFAULT_RUNTIME = 0;
 export const MINUTES_IN_HOUR = 60;
+export const RECENTLY_VIEWED_STORAGE_KEY = "RecentlyViewedMovies";
+export const RECENTLY_VIEWED_MOVIES_LIMIT = 20;
+export const RECENTLY_VIEWED_MOVIES_HOMEPAGE_LIMIT = 5;
