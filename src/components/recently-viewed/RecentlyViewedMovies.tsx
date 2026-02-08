@@ -6,7 +6,6 @@ import MovieGrid from "@/components/common/MovieGrid";
 import EmptyList from "@/components/common/EmptyList";
 import { getLocalizedText } from "@/lib/utils/CommonUtils";
 import { isEmptyArray } from "@/lib/utils/ObjectUtils";
-import { ClapperboardIcon } from "@/lib/svg/icons";
 import RecentlyViewedSkeleton from "@/skeleton/recently-viewed/RecentlyViewedSkeleton";
 
 export default function RecentlyViewedMovies() {
@@ -28,7 +27,6 @@ export default function RecentlyViewedMovies() {
       </div>
       {isEmptyArray(movies) ? (
         <EmptyList
-          icon={<ClapperboardIcon className="w-16 h-16 md:w-20 md:h-20" />}
           title={getLocalizedText("RECENTLY_VIEWED", "NO_MOVIES_TITLE")}
           description={getLocalizedText(
             "RECENTLY_VIEWED",

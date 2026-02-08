@@ -19,6 +19,10 @@ export function getReleaseYear(dateString: string): string {
 }
 
 export function getFormattedRating(value: number): string {
+  if (typeof value !== "number" || isNaN(value)) {
+    return "0.0";
+  }
+
   return value.toFixed(1);
 }
 

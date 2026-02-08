@@ -1,13 +1,15 @@
 "use client";
 
+import { ClapperboardIcon } from "@/lib/svg/icons";
+
 interface EmptyListProps {
-  icon: React.ReactNode;
+  icon?: React.ReactNode;
   title: string;
   description: string;
 }
 
 export default function EmptyList({
-  icon,
+  icon = <ClapperboardIcon className="w-16 h-16 md:w-20 md:h-20" />,
   title,
   description,
 }: EmptyListProps) {

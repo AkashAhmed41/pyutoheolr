@@ -6,7 +6,6 @@ import MovieGrid from "@/components/common/MovieGrid";
 import EmptyList from "@/components/common/EmptyList";
 import { getLocalizedText } from "@/lib/utils/CommonUtils";
 import { isEmptyArray } from "@/lib/utils/ObjectUtils";
-import { ClapperboardIcon } from "@/lib/svg/icons";
 import WatchLaterSkeleton from "@/skeleton/watch-later/WatchLaterSkeleton";
 
 export default function WatchLaterMovies() {
@@ -28,7 +27,6 @@ export default function WatchLaterMovies() {
       </div>
       {isEmptyArray(movies) ? (
         <EmptyList
-          icon={<ClapperboardIcon className="w-16 h-16 md:w-20 md:h-20" />}
           title={getLocalizedText("WATCH_LATER", "NO_MOVIES_TITLE")}
           description={getLocalizedText("WATCH_LATER", "NO_MOVIES_DESCRIPTION")}
         />
