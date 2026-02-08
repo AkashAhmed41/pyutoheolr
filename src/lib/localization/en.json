@@ -23,5 +23,14 @@
     "DESCRIPTION": "Continue exploring from where you left off",
     "NO_MOVIES_TITLE": "No recently viewed movies",
     "NO_MOVIES_DESCRIPTION": "Movies you view will appear here. Start exploring to build your viewing history!"
+  },
+  "WATCH_LATER": {
+    "TITLE": "Watch Later",
+    "DESCRIPTION": "Your personal collection of movies to watch next",
+    "NO_MOVIES_TITLE": "Your watch later list is empty",
+    "NO_MOVIES_DESCRIPTION": "Add movies to your list using the bookmark icon on any movie card.",
+    "LIMIT_REACHED": "Your watch later list is full. Please remove some movies to add new ones.",
+    "ADD_TOOLTIP": "Add to Watch Later",
+    "REMOVE_TOOLTIP": "Remove from Watch Later"
   }
 }

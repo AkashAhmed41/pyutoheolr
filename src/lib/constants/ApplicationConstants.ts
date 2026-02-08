@@ -1,12 +1,24 @@
 export const DEFAULT_PAGE = 1;
+export const MINUTES_IN_HOUR = 60;
+export const NOT_FOUND_INDEX = -1;
+
 export const MOVIES_FOR_HOMEPAGE_PER_GENRE = 5;
 export const HERO_SECTION_ROTATION_INTERVAL = 5000;
+
 export const HORIZONTAL_SCROLL_AMOUNT = 400;
 export const HORIZONTAL_SCROLL_THRESHOLD = 10;
 export const SCROLL_CHECK_DELAY = 100;
+
 export const MAX_CAST_MEMBERS = 15;
 export const DEFAULT_RUNTIME = 0;
-export const MINUTES_IN_HOUR = 60;
+
 export const RECENTLY_VIEWED_STORAGE_KEY = "RecentlyViewedMovies";
 export const RECENTLY_VIEWED_MOVIES_LIMIT = 20;
 export const RECENTLY_VIEWED_MOVIES_HOMEPAGE_LIMIT = 5;
+
+export const WATCH_LATER_STORAGE_KEY = "WatchLaterMovies";
+export const WATCH_LATER_MOVIES_LIMIT = 30;
+export const WATCH_LATER_MOVIES_HOMEPAGE_LIMIT = 5;
+
+export const TOAST_DEFAULT_DURATION = 3000;
+export const TOAST_TRANSITION_DURATION = 300;

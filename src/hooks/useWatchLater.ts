@@ -2,18 +2,19 @@
 
 import { useEffect, useState, useCallback } from "react";
 import {
-  getRecentlyViewedMovies,
-  addToRecentlyViewed,
-} from "@/lib/utils/RecentlyViewedUtils";
+  getWatchLaterMovies,
+  toggleWatchLater as toggleWatchLaterUtil,
+  isInWatchLater as checkInWatchLater,
+} from "@/lib/utils/WatchLaterUtils";
 import type { Movie } from "@/types/Interfaces";
 
-export function useRecentlyViewed() {
+export function useWatchLater() {
   const [movies, setMovies] = useState<Movie[]>([]);
   const [hasMounted, setHasMounted] = useState(false);
 
   const fetchMovies = useCallback(() => {
-    const items = getRecentlyViewedMovies();
-    setMovies(items.map((item) => item.movie));
+    const items = getWatchLaterMovies();
+    setMovies(items);
   }, []);
 
   useEffect(() => {
@@ -21,14 +22,18 @@ export function useRecentlyViewed() {
     setHasMounted(true);
   }, [fetchMovies]);
 
-  const addMovieToHistory = useCallback(
+  const toggleWatchLater = useCallback(
     (movie: Movie) => {
-      addToRecentlyViewed(movie);
+      toggleWatchLaterUtil(movie);
       fetchMovies();
       window.dispatchEvent(new Event("storage"));
     },
     [fetchMovies],
   );
+
+  const isInWatchLater = useCallback((movieId: number) => {
+    return checkInWatchLater(movieId);
+  }, []);
 
   useEffect(() => {
     const handleStorageChange = () => fetchMovies();
@@ -38,7 +43,8 @@ export function useRecentlyViewed() {
 
   return {
     movies,
-    addMovieToHistory,
+    toggleWatchLater,
+    isInWatchLater,
     hasMounted,
   };
 }

@@ -157,3 +157,30 @@ export const ClapperboardIcon = ({ className = "w-12 h-12" }: IconProps) => (
     <path strokeLinecap="round" strokeLinejoin="round" d="M4 12l3.7-3.7" />
   </svg>
 );
+export const BookmarkIcon = ({ className = "w-5 h-5" }: IconProps) => (
+  <svg
+    className={className}
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"
+    />
+  </svg>
+);
+
+export const BookmarkFillIcon = ({ className = "w-5 h-5" }: IconProps) => (
+  <svg
+    className={className}
+    fill="currentColor"
+    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
+  </svg>
+);

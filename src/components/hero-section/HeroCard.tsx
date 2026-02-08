@@ -1,5 +1,8 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import type { Movie } from "@/types/Interfaces";
 import { getBackdropUrl } from "@/lib/utils/ImageUtils";
 import { getReleaseYear, getFormattedRating } from "@/lib/utils/CommonUtils";
@@ -19,7 +22,9 @@ export default function HeroCard({
   isActive,
   priority = false,
 }: HeroCardProps) {
+  const router = useRouter();
   const { id, title, backdropPath, voteAverage, releaseDate, overview } = movie;
+  const detailsUrl = appRouteList.movieDetails(id);
 
   return (
     <div className="relative w-full aspect-[16/9] rounded-xl overflow-hidden shadow-2xl ring-1 ring-white/10">
@@ -37,7 +42,10 @@ export default function HeroCard({
         }`}
       >
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
-        <div className="absolute bottom-0 left-0 right-0 p-3 md:p-5 lg:p-6">
+        <div
+          className="absolute bottom-0 left-0 right-0 p-3 md:p-5 lg:p-6 cursor-pointer md:cursor-default"
+          onClick={() => router.push(detailsUrl)}
+        >
           <h1 className="text-base md:text-xl lg:text-2xl font-bold text-white mb-1 md:mb-2 drop-shadow-lg line-clamp-1 transition-all duration-500">
             {title}
           </h1>
@@ -59,11 +67,7 @@ export default function HeroCard({
             {overview}
           </p>
           <div className="hidden md:flex gap-3">
-            <Button
-              variant="secondary"
-              icon={<InfoIcon />}
-              href={appRouteList.movieDetails(id)}
-            >
+            <Button variant="secondary" icon={<InfoIcon />} href={detailsUrl}>
               {getLocalizedText("HOMEPAGE", "MORE_INFO")}
             </Button>
           </div>
